@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Riski</title>
+    <style>
+        :root {
+            --bg: #f3f4f6;
+            --card: #ffffff;
+            --text: #111827;
+            --accent: #2563eb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: 0.2s ease;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .profil {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .foto {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+        }
+
+        .btn {
+            padding: 10px 14px;
+            border: 0;
+            border-radius: 8px;
+            cursor: pointer;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        section {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .proyek-item {
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+
+        .sembunyi {
+            display: none;
+        }
+
+        .gelap {
+            --bg: #111827;
+            --card: #1f2937;
+            --text: #f9fafb;
+            --accent: #60a5fa;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 760px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="profil">
+                <img class="foto" src="https://picsum.photos/120" alt="Foto siswa" />
+                <div>
+                    <h1 style="margin:0;">Riski Eka</h1>
+                    <p style="margin:0;">Web Developer</p>
+                </div>
+            </div>
+            <button class="btn" id="toggleMode">Ganti Mode</button>
+        </header>
+
+        <main class="grid">
+            <section id="tentang">
+                <h2>Tentang Saya</h2>
+                <p>nama saya riski rumah saya di dersalam</p>
+            </section>
+
+            <section id="skill">
+                <h2>Hobi</h2>
+                <button class="btn" id="tombolSkill" type="button">Lihat/Sembunyikan Skill</button>
+                <ul id="daftarSkill">
+                    <li>Belajar</li>
+                    <li>Ngegame</li>
+                    
+                </ul>
+            </section>
+
+            <section id="proyek">
+                <h2>Film Kesukaan</h2>
+                <div class="proyek-item">Cars 2</div>
+                <div class="proyek-item">Upin Ipin Durian Jatuh</div>
+                <div class="proyek-item">Suparman</div>
+            </section>
+
+            <section id="kontak">
+                <h2>Kontak</h2>
+                <input id="nama" type="text" placeholder="Nama" />
+                <textarea id="pesan" placeholder="Pesan"></textarea>
+                <button class="btn" id="kirim" type="button">Kirim</button>
+                <p id="info"></p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const toggleMode = document.getElementById("toggleMode");
+        const tombolSkill = document.getElementById("tombolSkill");
+        const daftarSkill = document.getElementById("daftarSkill");
+        const nama = document.getElementById("nama");
+        const pesan = document.getElementById("pesan");
+        const kirim = document.getElementById("kirim");
+        const info = document.getElementById("info");
+
+        toggleMode.addEventListener("click", function () {
+            document.body.classList.toggle("gelap");
+        });
+
+        tombolSkill.addEventListener("click", function () {
+            daftarSkill.classList.toggle("sembunyi");
+        });
+
+        kirim.addEventListener("click", function () {
+            if (nama.value === "" || pesan.value === "") {
+                info.textContent = "Nama dan pesan wajib diisi.";
+                info.style.color = "crimson";
+                return;
+            }
+
+            info.textContent = "Pesan berhasil dikirim. Terima kasih!";
+            info.style.color = "limegreen";
+        });
+    </script>
+</body>
+
+</html>
